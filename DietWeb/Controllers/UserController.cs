@@ -32,30 +32,16 @@ public class UserController : ControllerBase
         return user == null ? NotFound() : Ok(user);
     }
 
-    //[HttpPost]
-    //public async Task<IActionResult> Create(User user)
-    //{
-    //    var created = await _service.AddAsync(user);
-    //    return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
-    //}
 
-    /* [HttpPut("{id}")]
-     [Authorize]
-     public async Task<IActionResult> Update(int id, User user)
-     {
-         user.Id = id;
-         await _service.UpdateAsync(user);
-         return NoContent();
-     }
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<IActionResult> UpdateFavorite(int id, Recipe recipes)
+    {
+        await _service.UpdateFavoriteRecipesAsync(id, recipes);
+        //return Ok();
+        return NoContent();
 
-     [HttpDelete("{id}")]
-     [Authorize]
-     public async Task<IActionResult> Delete(int id)
-     {
-         await _service.DeleteAsync(id);
-         return NoContent();
-     }
-    */
+    }
 
     [HttpPatch("{id}")]
     [Authorize]
@@ -63,7 +49,8 @@ public class UserController : ControllerBase
     {
         Console.WriteLine("📥 Payload שהתקבל:");
         Console.WriteLine(JsonSerializer.Serialize(update));
-        var user = await _service.GetByIdAsync(id);
+
+        var user = await _service.GetUserWithFavoriteRecipes(id);
         if (user == null) return NotFound();
 
         // ✅ עדכון שדות בסיסיים
@@ -71,50 +58,24 @@ public class UserController : ControllerBase
         {
             if (user.StartWeight == null)
                 user.StartWeight = update.CurrentWeight.Value;
-
             user.currentWeight = update.CurrentWeight.Value;
         }
-
         if (update.Height.HasValue)
             user.Height = update.Height.Value;
-
         if (update.GoalWeight.HasValue)
             user.GoalWeight = update.GoalWeight.Value;
-
         if (!string.IsNullOrEmpty(update.ProgramLevel))
             user.ProgramLevel = update.ProgramLevel;
-
         if (!string.IsNullOrEmpty(update.ChatPersonality))
             user.ChatPersonality = update.ChatPersonality;
 
-        // ✅ עדכון/החלפה של העדפות תזונה
-        if (update.DietaryPreferences != null)
-        {
-            // ודא שרשימת ההעדפות מאותחלת
-            if (user.DietaryPreferences == null)
-                user.DietaryPreferences = new List<DietaryPreference>();
-            else
-                user.DietaryPreferences.Clear(); // איפוס לפני עדכון
-
-            // הכנסת רק פריטים ייחודיים לפי שם המאכל
-            var uniquePreferences = update.DietaryPreferences
-                .GroupBy(p => p.FoodName)
-                .Select(g => g.First());
-
-            foreach (var pref in uniquePreferences)
-            {
-                user.DietaryPreferences.Add(new DietaryPreference
-                {
-                    UserId = pref.UserId,
-                    FoodName = pref.FoodName,
-                    Like = pref.Like
-                });
-            }
-        }
+        
 
         await _service.UpdateAsync(user);
         return Ok(update);
+
     }
+
 
 
 }

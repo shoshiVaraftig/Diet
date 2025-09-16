@@ -12,6 +12,7 @@ namespace DietWeb.Core.Models
         public int Calories { get; set; }
         public string Category { get; set; } = "";
         public string ServingSize { get; set; } = "";
+
     }
 
 }

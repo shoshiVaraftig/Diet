@@ -14,6 +14,7 @@ namespace DietWeb.Core.Services
         Task<Recipe> AddAsync(Recipe recipe);
         Task UpdateAsync(Recipe recipe);
         Task DeleteAsync(int id);
+        Task<Recipe> GenerateRecipeAsync(string query, bool isVegetarian, bool isVegan, bool isGlutenFree, bool isDairyFree);
     }
 
 }

@@ -15,9 +15,8 @@ namespace DietWeb.Core.Repositories
         Task UpdateAsync(User user);
         Task DeleteAsync(int id);
         Task<User> GetUserByUsername(string username); // *** הוספה חדשה זו ***
-
-
-
+        Task<User?> GetUserWithFavoriteRecipes(int userId);
+        Task UpdateFavoriteRecipesAsync(int userId, Recipe recipes);
     }
 
 }

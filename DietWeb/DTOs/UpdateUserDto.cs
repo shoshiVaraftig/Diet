@@ -11,6 +11,8 @@ namespace DietWeb.API.DTOs
         public string? ChatPersonality { get; set; }
         public string? ProgramLevel { get; set; }
         public List<DietaryPreferenceDto>? DietaryPreferences { get; set; }
+        public List<FavoriteRecipeDto>? FavoriteRecipes { get; set; }
+
     }
 
 }

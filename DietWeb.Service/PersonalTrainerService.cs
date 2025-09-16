@@ -50,18 +50,19 @@ namespace DietWeb.Service
             _db.Messages.Add(userMessage);
             await _db.SaveChangesAsync();
 
-            // Get conversation history
+            
             var history = await _db.Messages
                 .Where(m => m.UserId == userId)
-                .OrderBy(m => m.Timestamp)
+                .OrderByDescending(m => m.Timestamp) // Order by latest first
+                .Take(5) // Take only the last 10 messages
+                .OrderBy(m => m.Timestamp) // Re-order back to chronological order
                 .ToListAsync();
 
-            var messages = new List<Message>
-        {
-            new(Role.System, $"אתה מאמן תזונה יש לענות תשובות על פי האופי : {personality}"),
-            new(Role.System, "אתה עוזר אישי לתזונה בלבד. תענה רק על שאלות שקשורות לתזונה, הרגלי אכילה, ליווי תזונתי ובריאות הקשורה לתזונה. אל תענה על שאלות שאינן קשורות לתחום זה."),
 
-        };
+            var messages = new List<Message>
+{
+    new(Role.System, $"אתה מאמן תזונה אישי בשם 'אורי'. האופי שלך הוא {{personality}}. ענה על שאלות רק בנושא תזונה בריאה. אם המשתמש שואל על נושא אחר, ענה בנימוס שאינך יכול לענות על כך.\r\n    \r\n    תפקידך הוא לספק ליווי וייעוץ בנושאי תזונה, הרגלי אכילה ובריאות כללית הקשורה לאוכל.\r\n    תשובותיך צריכות להיות קצרות, תמציתיות, ללא שגיאות כתיב ובעברית בלבד. הניסוח צריך להיות ברור ומקצועי.\r\n\r\n    כאשר המשתמש שואל שאלה כללית (לדוגמה, 'מה כדאי לאכול בצהריים?'), אל תספק רשימה של מתכונים או רעיונות כלליים.\r\n    במקום זאת, עליך לנהל שיחה קצרה על מנת להבין את הצרכים הספציפיים שלו. שאל אותו שאלות מנחות כמו: 'אילו מצרכים יש לך בבית?' או 'אילו מאכלים אתה מעדיף לאכול?'.\r\n\r\n    לאחר שתקבל את המידע, ספק תשובה ספציפית וקצרה שמבוססת על המידע שקיבלת מהמשתמש. הימנע ממתן תשובות רשימתיות או כלליות. ענה כאילו אתה אדם אמיתי שמנהל שיחה ולא בוט שנותן תשובה קבועה")
+};
 
             messages.AddRange(history.Select(m =>
                 new Message(m.Role == "user" ? Role.User : Role.Assistant, m.Content)

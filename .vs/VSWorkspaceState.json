@@ -1,19 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-<<<<<<< HEAD
-    "\\DietWeb-server-main",
-    "\\DietWeb-server-main\\DietWeb",
-    "\\DietWeb-server-main\\DietWeb.Data",
-    "\\DietWeb-server-main\\DietWeb.Service",
-    "\\DietWeb-server-main\\DietWeb\\Controllers"
+    "\\DietWeb-server"
   ],
-  "SelectedNode": "\\DietWeb-server-main\\DietWeb.Service\\RecipeService.cs",
-=======
-    "\\DietWeb",
-    "\\DietWeb.Data"
-  ],
-  "SelectedNode": "\\DietWeb.sln",
->>>>>>> f7a6e0f4c418a977b3493e3f8724c080041b53c4
+  "SelectedNode": "\\DietWeb-server\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

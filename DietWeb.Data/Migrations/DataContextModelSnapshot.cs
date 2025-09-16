@@ -76,6 +76,29 @@ namespace DietWeb.Data.Migrations
                     b.ToTable("DietaryPreference");
                 });
 
+            modelBuilder.Entity("DietWeb.Core.Models.FavoriteRecipe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoriteRecipe");
+                });
+
             modelBuilder.Entity("DietWeb.Core.Models.Food", b =>
                 {
                     b.Property<int>("Id")
@@ -112,24 +135,58 @@ namespace DietWeb.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Calories")
-                        .HasColumnType("int");
+                    b.Property<bool>("DairyFree")
+                        .HasColumnType("bit")
+                        .HasAnnotation("Relational:JsonPropertyName", "DairyFree");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasAnnotation("Relational:JsonPropertyName", "Description");
+
+                    b.Property<bool>("GlutenFree")
+                        .HasColumnType("bit")
+                        .HasAnnotation("Relational:JsonPropertyName", "GlutenFree");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasAnnotation("Relational:JsonPropertyName", "Image");
 
                     b.PrimitiveCollection<string>("Ingredients")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasAnnotation("Relational:JsonPropertyName", "Ingredients");
 
                     b.PrimitiveCollection<string>("Instructions")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasAnnotation("Relational:JsonPropertyName", "Instructions");
+
+                    b.Property<int>("Likes")
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "Likes");
+
+                    b.Property<int?>("ReadyInMinutes")
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "ReadyInMinutes");
+
+                    b.Property<int?>("Servings")
+                        .HasColumnType("int")
+                        .HasAnnotation("Relational:JsonPropertyName", "Servings");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasAnnotation("Relational:JsonPropertyName", "Title");
+
+                    b.Property<bool>("Vegan")
+                        .HasColumnType("bit")
+                        .HasAnnotation("Relational:JsonPropertyName", "Vegan");
+
+                    b.Property<bool>("Vegetarian")
+                        .HasColumnType("bit")
+                        .HasAnnotation("Relational:JsonPropertyName", "Vegetarian");
 
                     b.HasKey("Id");
 
@@ -229,6 +286,25 @@ namespace DietWeb.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DietWeb.Core.Models.FavoriteRecipe", b =>
+                {
+                    b.HasOne("DietWeb.Core.Models.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("User", "User")
+                        .WithMany("FavoriteRecipes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("DietWeb.Core.Models.WeightTracing", b =>
                 {
                     b.HasOne("User", null)
@@ -241,6 +317,8 @@ namespace DietWeb.Data.Migrations
             modelBuilder.Entity("User", b =>
                 {
                     b.Navigation("DietaryPreferences");
+
+                    b.Navigation("FavoriteRecipes");
 
                     b.Navigation("WeightTracing");
                 });

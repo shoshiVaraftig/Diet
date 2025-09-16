@@ -5752,23 +5752,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\משתמש\\.nuget\\packages\\": {},
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Service\\DietWeb.Service.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Service\\DietWeb.Service.csproj",
       "projectName": "DietWeb.Service",
-      "projectPath": "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Service\\DietWeb.Service.csproj",
-      "packagesPath": "C:\\Users\\משתמש\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Service\\obj\\",
+      "projectPath": "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Service\\DietWeb.Service.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\משתמש\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5777,17 +5777,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Core\\DietWeb.Core.csproj": {
-              "projectPath": "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Core\\DietWeb.Core.csproj"
+            "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Core\\DietWeb.Core.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Core\\DietWeb.Core.csproj"
             },
-            "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Data\\DietWeb.Data.csproj": {
-              "projectPath": "C:\\Users\\משתמש\\Desktop\\DietWeb-server\\DietWeb-server\\DietWeb.Data\\DietWeb.Data.csproj"
+            "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Data\\DietWeb.Data.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\פרויקט גמר שושי וכבי\\DietWeb.Data\\DietWeb.Data.csproj"
             }
           }
         }
@@ -5802,7 +5803,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -5853,7 +5854,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

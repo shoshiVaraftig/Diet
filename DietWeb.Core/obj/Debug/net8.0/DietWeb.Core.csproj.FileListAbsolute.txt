@@ -23,3 +23,29 @@ C:\Users\משתמש\Desktop\DietWeb-server\DietWeb-server\DietWeb.Core\obj\Debug
 C:\Users\משתמש\Desktop\DietWeb-server\DietWeb-server\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.pdb
 C:\Users\משתמש\Desktop\DietWeb-server\DietWeb-server\DietWeb.Core\obj\Debug\net8.0\ref\DietWeb.Core.dll
 C:\Users\משתמש\Desktop\DietWeb-server\DietWeb-server\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\אלול\DietWeb.Core\bin\Debug\net8.0\DietWeb.Core.deps.json
+C:\Users\USER\Documents\אלול\DietWeb.Core\bin\Debug\net8.0\DietWeb.Core.dll
+C:\Users\USER\Documents\אלול\DietWeb.Core\bin\Debug\net8.0\DietWeb.Core.pdb
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.AssemblyInfoInputs.cache
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.AssemblyInfo.cs
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.sourcelink.json
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.dll
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\refint\DietWeb.Core.dll
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.pdb
+C:\Users\USER\Documents\אלול\DietWeb.Core\obj\Debug\net8.0\ref\DietWeb.Core.dll
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\bin\Debug\net8.0\DietWeb.Core.deps.json
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\bin\Debug\net8.0\DietWeb.Core.dll
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\bin\Debug\net8.0\DietWeb.Core.pdb
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.AssemblyInfoInputs.cache
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.AssemblyInfo.cs
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.sourcelink.json
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.dll
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\refint\DietWeb.Core.dll
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\DietWeb.Core.pdb
+C:\Users\USER\Documents\פרויקט גמר שושי וכבי\DietWeb.Core\obj\Debug\net8.0\ref\DietWeb.Core.dll

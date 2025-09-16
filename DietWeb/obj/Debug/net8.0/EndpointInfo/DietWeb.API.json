@@ -67,17 +67,7 @@
         }
       }
     },
-    "/api/Food": {
-      "get": {
-        "tags": [
-          "Food"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/api/Food/generate": {
       "post": {
         "tags": [
           "Food"
@@ -86,126 +76,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Food"
+                "$ref": "#/components/schemas/FoodItemRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Food"
+                "$ref": "#/components/schemas/FoodItemRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Food"
+                "$ref": "#/components/schemas/FoodItemRequest"
               }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Food/search": {
-      "get": {
-        "tags": [
-          "Food"
-        ],
-        "parameters": [
-          {
-            "name": "foodName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Food/{id}": {
-      "get": {
-        "tags": [
-          "Food"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Food"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Food"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Food"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Food"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Food"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -266,17 +151,7 @@
         }
       }
     },
-    "/api/Recipe": {
-      "get": {
-        "tags": [
-          "Recipe"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/api/Recipe/generate": {
       "post": {
         "tags": [
           "Recipe"
@@ -285,105 +160,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Recipe"
+                "$ref": "#/components/schemas/GenerateRecipeRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Recipe"
+                "$ref": "#/components/schemas/GenerateRecipeRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Recipe"
+                "$ref": "#/components/schemas/GenerateRecipeRequest"
               }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Recipe/{id}": {
-      "get": {
-        "tags": [
-          "Recipe"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Recipe"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Recipe"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Recipe"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Recipe"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Recipe"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -425,6 +216,46 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Recipe"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "patch": {
         "tags": [
           "User"
@@ -443,13 +274,19 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDto"
+              }
             },
             "text/json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDto"
+              }
             },
             "application/*+json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDto"
+              }
             }
           }
         },
@@ -463,28 +300,67 @@
   },
   "components": {
     "schemas": {
-      "Food": {
+      "DietaryPreferenceDto": {
+        "type": "object",
+        "properties": {
+          "foodName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "like": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FavoriteRecipeDto": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "name": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FoodItemRequest": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenerateRecipeRequest": {
+        "type": "object",
+        "properties": {
+          "query": {
             "type": "string",
             "nullable": true
           },
-          "calories": {
-            "type": "integer",
-            "format": "int32"
+          "isVegetarian": {
+            "type": "boolean"
           },
-          "category": {
-            "type": "string",
-            "nullable": true
+          "isVegan": {
+            "type": "boolean"
           },
-          "servingSize": {
-            "type": "string",
-            "nullable": true
+          "isGlutenFree": {
+            "type": "boolean"
+          },
+          "isDairyFree": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -506,33 +382,55 @@
       "Recipe": {
         "type": "object",
         "properties": {
-          "id": {
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "Ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "Instructions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "ReadyInMinutes": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
-          "title": {
+          "Servings": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Vegetarian": {
+            "type": "boolean"
+          },
+          "Vegan": {
+            "type": "boolean"
+          },
+          "GlutenFree": {
+            "type": "boolean"
+          },
+          "DairyFree": {
+            "type": "boolean"
+          },
+          "Image": {
             "type": "string",
             "nullable": true
           },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "ingredients": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "instructions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "calories": {
+          "Likes": {
             "type": "integer",
             "format": "int32"
           }
@@ -570,6 +468,54 @@
           },
           "input": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "startWeight": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "currentWeight": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "goalWeight": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "chatPersonality": {
+            "type": "string",
+            "nullable": true
+          },
+          "programLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "dietaryPreferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DietaryPreferenceDto"
+            },
+            "nullable": true
+          },
+          "favoriteRecipes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteRecipeDto"
+            },
             "nullable": true
           }
         },

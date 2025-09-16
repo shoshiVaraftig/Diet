@@ -15,7 +15,9 @@ namespace DietWeb.Core.Services
         Task UpdateAsync(User user);
         Task DeleteAsync(int id);
         Task<User> GetUserByUsername(string username);
-
+        // (לדוגמה: אם אתה רוצה מתודה ספציפית לעדכון מתכונים מועדפים)
+        Task UpdateFavoriteRecipesAsync(int userId, Recipe recipes);
+        Task<User?> GetUserWithFavoriteRecipes(int userId);
     }
 
 

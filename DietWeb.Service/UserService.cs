@@ -30,6 +30,16 @@ namespace DietWeb.Service
         {
             return await _repository.GetUserByUsername(username);
         }
+
+        public Task UpdateFavoriteRecipesAsync(int userId, Recipe recipe)
+        {
+            return _repository.UpdateFavoriteRecipesAsync(userId, recipe);
+        }
+        public async Task<User?> GetUserWithFavoriteRecipes(int userId)
+        {
+            // אתה צריך לוודא ששליפת המשתמש כוללת את רשימת המתכונים
+            return await _repository.GetUserWithFavoriteRecipes(userId);
+        }
     }
 
 }

@@ -1,45 +1,69 @@
-﻿
-
-using DietWeb.Core.Models;
-using DietWeb.Core.Repositories;
+﻿using DietWeb.Core.Models;
 using DietWeb.Core.Services;
+using Microsoft.Extensions.Configuration;
+using OpenAI;
+using OpenAI.Chat;
+using System;
+using System.Text.Json;
+using System.Threading.Tasks;
 
-namespace DietWeb.Service
+public class FoodService : IFoodService
 {
-    public class FoodService : IFoodService
+    private readonly OpenAIClient _client;
+
+    // השתמש בבונה הזה בלבד
+    public FoodService(OpenAIClient client)
     {
-        private readonly IFoodRepository _repository;
-
-        public FoodService(IFoodRepository repository)
-        {
-            _repository = repository;
-        }
-
-        public Task<IEnumerable<Food>> GetAllAsync() => _repository.GetAllAsync();
-
-
-        public async Task<Food> GetFoodByNameAsync(string foodName) // חייב להיות async Task<Food>
-        {
-            var food = await _repository.GetFoodByNameAsync(foodName);
-
-            if (food == null)
-            {
-                // חשוב לטפל במקרה שלא נמצא מזון
-                throw new KeyNotFoundException($"Food '{foodName}' not found.");
-            }
-
-            return food;
-        }
-
-
-
-        public Task<Food?> GetByIdAsync(int id) => _repository.GetByIdAsync(id);
-
-        public Task<Food> AddAsync(Food food) => _repository.AddAsync(food);
-
-        public Task UpdateAsync(Food food) => _repository.UpdateAsync(food);
-
-        public Task DeleteAsync(int id) => _repository.DeleteAsync(id);
+        _client = client;
     }
 
+
+    public async Task<Food> GenerateFoodItemAsync(string query)
+    {
+        try
+        {
+            var prompt = BuildFoodItemPrompt(query);
+
+            var request = new ChatRequest(
+                messages: new[] { new Message(Role.User, prompt) },
+                model: "gpt-4-turbo",
+                responseFormat: ChatResponseFormat.Json
+            );
+
+            var result = await _client.ChatEndpoint.GetCompletionAsync(request);
+            var jsonResponse = result.FirstChoice.Message.Content.ToString().Trim();
+
+            var generatedFoodItem = JsonSerializer.Deserialize<Food>(jsonResponse, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            if (generatedFoodItem == null || string.IsNullOrEmpty(generatedFoodItem.Name))
+            {
+                throw new Exception("התשובה מה-AI אינה תקינה או חסרה נתונים.");
+            }
+
+            return generatedFoodItem;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"שגיאה ביצירת פריט המזון: {ex.Message}");
+        }
+    }
+
+    private string BuildFoodItemPrompt(string query)
+    {
+        return $@"
+            צור אובייקט JSON בלבד על פריט מזון בשם '{query}'.
+            עליך לספק את הנתונים הבאים בעברית:
+            {{
+                ""Name"": ""שם המזון"",
+                ""Calories"": 0,
+                ""Category"": ""קטגוריה"",
+                ""ServingSize"": ""גודל מנה לדוגמה""
+
+            }}
+          .  ודא שכל המידע מדויק ככל הניתן. אם נשאלת על פריט שאינו מזון, תשיב: לא רלוונטי.
+        ";
+    }
 }

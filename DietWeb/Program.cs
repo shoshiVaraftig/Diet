@@ -6,12 +6,10 @@ using DietWeb.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer; // הוסף את זה
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens; // הוסף את זה
+using OpenAI;
 using System.Text; // הוסף את זה
 
 var builder = WebApplication.CreateBuilder(args);
-
-
-
 
 // Add services to the container.
 
@@ -39,7 +37,6 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPersonalTrainerService, PersonalTrainerService>();
 builder.Services.AddScoped<IConversationRepository, ConversationRepository>();
-
 builder.Services.AddScoped<IAuthService, AuthService>(); // *** הוספה חדשה זו ***
 
 //builder.Services.AddDbContext<DataContext>();
@@ -72,8 +69,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization(); // *** הוספה חדשה זו, נחוץ לשימוש ב- [Authorize] ***
-
+var openAIApiKey = builder.Configuration["OpenAI:ApiKey"];
+builder.Services.AddSingleton<OpenAIClient>(sp => new OpenAIClient(openAIApiKey));
+builder.Services.AddScoped<IFoodService, FoodService>();
 
 var app = builder.Build();
 

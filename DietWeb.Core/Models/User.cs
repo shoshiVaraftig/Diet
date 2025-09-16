@@ -19,4 +19,6 @@ public class User
     public WeightTracing? WeightTracing { get; set; }
     public List<DietaryPreference>? DietaryPreferences { get; set; } = new();
     public string? ChatPersonality { get; set; }
+    public List<FavoriteRecipe>? FavoriteRecipes { get; set; } = new();
+
 }
